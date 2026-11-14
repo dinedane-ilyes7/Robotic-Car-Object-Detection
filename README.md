@@ -1,6 +1,6 @@
 # Robotic Car (Object Detection)
 
-<!-- Prototype photograph is included in the downloadable reconstruction package; GitHub image upload pending. -->
+![Photograph of the original robotic-car prototype](assets/robot_car_photo.webp)
 
 **Bachelor's electrical/electronic engineering project (2023–2024)**  
 **Repository maintainer:** Ilyes Dinedane  

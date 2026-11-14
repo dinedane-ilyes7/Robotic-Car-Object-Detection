@@ -18,20 +18,20 @@ A four-wheel prototype combining **Bluetooth remote movement control** and **pho
 
 The project report describes successful Bluetooth movement and object identification using an IP webcam. **It does not supply code proving autonomous obstacle-avoidance steering, and the Python detector and ESP32 motor controller are separate in the documented implementation.**
 
-## Original documents and reconstructed code
+## Project files
 
-The original source files were misplaced. This repository was **reconstructed from the academic project report and poster**, including code listings on report pages 23–27 and the hardware figure on page 20. It is **not** a bit-for-bit recovery of the original Arduino or Python files. Modifications and assumptions are documented in [source notes](docs/SOURCE_NOTES.md).
+The repository includes ESP32 Bluetooth motor-control firmware, a Python OpenCV object detector, hardware notes and a photograph of the prototype. Since the original development files were unavailable, the code published here is a **recreated and updated version**, not a byte-for-byte copy of the original programs. Implementation notes are in [source notes](docs/SOURCE_NOTES.md).
 
 | Path | What it contains |
 |---|---|
-| [`firmware/esp32_bluetooth_car/esp32_bluetooth_car.ino`](firmware/esp32_bluetooth_car/esp32_bluetooth_car.ino) | Reconstructed Bluetooth motion-control sketch; safer stop-on-timeout and explicit motor directions |
-| [`vision/object_detection.py`](vision/object_detection.py) | Reconstructed OpenCV SSD MobileNet v3 inference script, parameterized for an IP webcam |
+| [`firmware/esp32_bluetooth_car/esp32_bluetooth_car.ino`](firmware/esp32_bluetooth_car/esp32_bluetooth_car.ino) | ESP32 Bluetooth motion-control sketch; safer stop-on-timeout and explicit motor directions |
+| [`vision/object_detection.py`](vision/object_detection.py) | Python OpenCV SSD MobileNet v3 inference script, parameterized for an IP webcam |
 | [`vision/requirements.txt`](vision/requirements.txt) | Python dependency |
 | [`models/README.md`](models/README.md) | Required external detection model/COCO label files; not included |
 | [`docs/HARDWARE_WIRING.md`](docs/HARDWARE_WIRING.md) | Documented ESP32 GPIOs, motor driver, batteries, and enable-pin uncertainty |
-| [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Verified report claims vs. missing functionality |
-| [`docs/SOURCE_NOTES.md`](docs/SOURCE_NOTES.md) | Provenance, authorship, and reconstruction differences |
-| [`assets/robot_car_photo.png`](assets/robot_car_photo.png) | Original project prototype photo extracted from the project report |
+| [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md) | Documented project capabilities and current limitations |
+| [`docs/SOURCE_NOTES.md`](docs/SOURCE_NOTES.md) | Implementation history and changes |
+| [`assets/robot_car_photo.png`](assets/robot_car_photo.png) | Photograph of the original robotic-car prototype |
 
 ## System architecture
 
@@ -68,7 +68,7 @@ The camera-processing computer and the ESP32 are **not automatically linked** by
 | `S` | Stop |
 | `0`–`9`, `q` | Adjust requested motor PWM duty (only effective if EN pins are wired/configured) |
 
-The reconstructed sketch also stops the motors after a command timeout as a safety improvement. **This version has not been flashed to the original car or tested on the real hardware.**
+The current sketch also stops the motors after a command timeout as a safety improvement. **This version has not been flashed to the original car or tested on the real hardware.**
 
 ## Getting started: phone-camera object detection
 
@@ -91,9 +91,9 @@ The original report used **0.45 detection confidence**, **320×320 input**, and 
 ## Tested vs. not tested
 
 - **Documented historic results:** Bluetooth control of the robot; IP-camera-based object detection; Arduino IDE integration (as reported in the original project documentation).
-- **Reconstructed in this repository:** Arduino motor-control sketch and Python detection script; static Python checks passed.
-- **Not tested during reconstruction:** hardware upload, motor wiring, live camera stream, downloaded model compatibility, performance metrics, automated navigation.
+- **Included in this repository:** ESP32 motor-control sketch and Python detection script; offline source checks passed.
+- **Not yet retested with the published version:** hardware upload, motor wiring, live camera stream, downloaded model compatibility, performance metrics, automated navigation.
 
 ## Academic project credit
 
-**Repository maintainer:** Ilyes Dinedane. This was an **academic group project** supervised by **Mrs. Mouhouche Faiza**. The academic report and poster were used as source references and are **not copied into this repository**. The reconstruction does not claim sole authorship or tested functionality beyond the evidence documented above.
+**Repository maintainer:** Ilyes Dinedane. This was an **academic group project** supervised by **Mrs. Mouhouche Faiza**. The published code is a recreated version of the documented project and has not been independently verified on the original hardware. The original academic report and poster are not distributed here.
